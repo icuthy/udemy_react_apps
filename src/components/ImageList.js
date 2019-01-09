@@ -8,8 +8,8 @@ import React from 'react';
 
 // Alternative way to write code
 const ImageList = (props) => {
-    const images = props.images.map((image) => {
-        return <img src={image.urls.regular} alt={image.description} />
+    const images = props.images.map((image, key) => {
+        return <img src={image.urls.regular} alt={image.description} key={image.id} />
     });
     return <div>{images}</div>
 };
