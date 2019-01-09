@@ -6,11 +6,15 @@ class ImageCard extends React.Component {
         this.imageRef = React.createRef();
     }
 
-    // don't need to put ref in state since data is not going to change
+    // Refactored with call back on image load so we get access to image height before images are ??downloaded from Unsplash
     componentDidMount() {
-        // when console.log(this.imageRef.current.clientHeight) produces 0 in BhxBrowser, cos console.log runs before images are downloaded from unsplash url
-        console.log(this.imageRef);
+        this.imageRef.current.addEventListener('load', this.setSpans);
     }
+
+    setSpans = () => {
+        console.log(this.imageRef.current.clientHeight)
+    };
+
     render() {
         // props destructuring
         const { urls, description } = this.props.image;
